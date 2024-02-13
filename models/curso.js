@@ -20,10 +20,6 @@ const CursoSchema = Schema({
         type: String,
         require: [true, "la descripcion es obligatoria"]
     },
-    nivel:{
-        type: String,
-        require: [true, "El nivel es obligatorio"]
-    },
     modalidad:{
         type: String,
         require: [true, "La modalidad es obligatoria"]

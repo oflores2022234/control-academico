@@ -40,8 +40,7 @@ const MaestroSchema = Schema({
     }],
     role:{
         type: String,
-        require: auto,
-        enum: ["TEACHER_ROLE"]
+        default: "TEACHER_ROLE"
     },
     estado:{
         type: Boolean,

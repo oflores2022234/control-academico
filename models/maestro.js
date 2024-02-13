@@ -4,8 +4,9 @@ correo
 usuario
 telefono
 password
-edad
-cursoADar
+cursosImpartir
+rol
+Estado
 */
 
 const {Schema, model} = require('mongoose');
@@ -29,6 +30,22 @@ const MaestroSchema = Schema({
     telefono:{
         type: String,
         require: [true, "El telefono es obligatorio"]
+    },
+    password:{
+        type: String,
+        require: [true, 'La contraseña es obligatoria']
+    },
+    cursos:[{
+        nombre: String
+    }],
+    role:{
+        type: String,
+        require: auto,
+        enum: ["TEACHER_ROLE"]
+    },
+    estado:{
+        type: Boolean,
+        default: true
     }
 
 });

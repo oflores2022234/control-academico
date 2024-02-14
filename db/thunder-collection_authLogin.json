@@ -1,0 +1,28 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "authLogin",
+    "dateExported": "2024-02-14T22:57:25.161Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "314d9b60-038a-4a6d-9edc-644062e9a9a4",
+            "colId": "49ba7d34-0f61-48b0-9185-971138e529d1",
+            "containerId": "",
+            "name": "login",
+            "url": "http://localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-14T21:34:32.347Z",
+            "modified": "2024-02-14T22:49:39.968Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"correo\":\"MySQL@kinal.edu.gt\",\n    \"password\":\"101010\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

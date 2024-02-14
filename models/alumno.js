@@ -16,8 +16,8 @@ const AlumnoSchema = Schema({
         require: [true, 'La contraseña es obligatoria']
     },
     curso:{
-        type: Boolean,
-        default: true
+        type: String,
+        default: "none"
     },
     role:{
         type: String,

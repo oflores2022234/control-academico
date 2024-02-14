@@ -20,8 +20,8 @@ const MaestroSchema = Schema({
         require: [true, 'El telefono es obligatorio']
     },
     curso:{
-        type: Boolean,
-        default: true
+        type: String,
+        default: "none"
     },
     role:{
         type: String,

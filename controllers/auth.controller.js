@@ -2,6 +2,7 @@ const { request, response } = require('express');
 const Maestro = require('../models/maestro');
 const Alumno = require('../models/alumno');
 const bcryptjs = require('bcryptjs');
+const { generarJWT } = require('../helpers/generar-jwt');
 
 const login = async (req = request, res = respose) => {
     const { correo, password } = req.body;
@@ -80,10 +81,12 @@ const login = async (req = request, res = respose) => {
             })
          }*/
 
-
+         const token = await generarJWT(user.id);
 
          res.status(200).json({
-            msg: "Bienvenido"
+            msg: "Bienvenido",
+            user,
+            token
          });
 
         

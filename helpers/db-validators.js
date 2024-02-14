@@ -2,8 +2,9 @@
 const Role = require('../models/role');
 const Maestro = require('../models/maestro');
 const Curso = require('../models/curso');
+const Alumno = require('../models/alumno');
 
-/*Validaciones para rol */
+/*Validaciones para ROL */
 
 const esRoleValido = async (role = '') => {
     const existeRol = await Role.findOne({role});
@@ -11,6 +12,8 @@ const esRoleValido = async (role = '') => {
         throw new Error(`El role ${ role } no existe en la base de datos`);
     }
 }
+
+/*VALIDACIONES MAESTRO */
 
 const existenteEmail = async (correo = '') => {
     const existeEmail = await Maestro.findOne({correo});
@@ -27,6 +30,25 @@ const existeMeatroById = async (id = '') => {
 
 }
 
+/*VALIDACIONES PARA ALUMNO */
+
+const existeEmailA = async (correo = '') => {
+    const existeEmailA = await Alumno.findOne({correo});
+    if(existeEmailA){
+        throw new Error(`El correo ${ correo } ya esta registrado`);
+    }
+}
+
+const existeAlumnoId = async (id = '') => {
+    const existeAlumno = await Alumno.findOne({id});
+    if(existeAlumno){
+        throw new Error(`El id ${id} no pertenede a un usuario`);
+    }
+
+}
+
+
+
 /*VALIDACIONES PARA CURSOS */
 
 const existeCursoById = async (id = '') => {
@@ -40,5 +62,7 @@ module.exports = {
     esRoleValido,
     existenteEmail,
     existeMeatroById,
-    existeCursoById
+    existeCursoById,
+    existeEmailA,
+    existeAlumnoId
 }

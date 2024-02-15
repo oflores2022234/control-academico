@@ -36,50 +36,6 @@ const login = async (req = request, res = respose) => {
             });
          }
 
-        /*
-        const maestro = await Maestro.findOne({correo});
-        const alumno = await Alumno.findOne({correo});
-
-
-        if(!maestro){
-            return res.status(400).json({
-                msg: "Credencias incorrectas, correo no existe en la base de datos."
-            });
-        }
-
-        if(!maestro.estado){
-            return res.status(400).json({
-                msg: " El usuario no existe en la base de datos."
-            });
-         };
-
-         const validarPasswordM = bycryptjs.compareSync(password, maestro.password);
-         if(!validarPasswordM){
-            return res.status(400).json({
-                msg: "La contraseña es incorrecta"
-            })
-         }*/
-
-         /*---------------------------------------------- */
-         /*
-         if(!alumno){
-            return res.status(400).json({
-                msg: "Credenciales Incorrectas, correo no existe en la base de datos"
-            });
-         }
-
-         if(!alumno.estado){
-            return res.status(400).json({
-                msg: " El usuario no existe en la base de datos"
-            });
-         }
-
-         const validarPasswordA = bycryptjs.compareSync(password, alumno.password);
-         if(!validarPasswordA){
-            return res.status(400).json({
-                msg: "La contraseña es incorrecta"
-            })
-         }*/
 
          const token = await generarJWT(user.id);
 

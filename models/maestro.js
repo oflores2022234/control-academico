@@ -25,8 +25,7 @@ const MaestroSchema = Schema({
     },
     role:{
         type: String,
-        require: true,
-        enum: ["TEACHER_ROLE", "STUDENT_ROLE"]
+        default: "TEACHER_ROLE"
     },
     estado:{
         type: Boolean,
@@ -34,5 +33,11 @@ const MaestroSchema = Schema({
     }
     
 });
+
+MaestroSchema.methods.toJson = function(){
+    const{ __v, password, _id, ...maestro} = this.toObject();
+    maestro.uid = _id;
+    return maestro;
+}
 
 module.exports = model('Maestro', MaestroSchema);

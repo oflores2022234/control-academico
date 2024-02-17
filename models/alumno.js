@@ -15,14 +15,13 @@ const AlumnoSchema = Schema({
         type: String,
         require: [true, 'La contraseña es obligatoria']
     },
-    curso:{
-        type: String,
-        default: "none"
+    curso: {
+        type: [Schema.Types.ObjectId],
+        ref: 'Curso' 
     },
     role:{
         type: String,
-        require: true,
-        enum: ["STUDENT_ROLE", "TEACHER_ROLE"]
+        default: "STUDENT_ROLE"
     },
     estado:{
         type: Boolean,
@@ -30,5 +29,11 @@ const AlumnoSchema = Schema({
     }
 
 });
+
+AlumnoSchema.methods.toJSON = function(){
+    const{ __v, password, _id, ...alumno } = this.toObject();
+    alumno.uid = _id;
+    return alumno;
+}
 
 module.exports = model('Alumno', AlumnoSchema);

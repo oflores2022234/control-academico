@@ -42,10 +42,15 @@ const existeEmailA = async (correo = '') => {
 const existeAlumnoId = async (id = '') => {
     const existeAlumno = await Alumno.findOne({id});
     if(existeAlumno){
-        throw new Error(`El id ${id} no pertenede a un usuario`);
+        throw new Error(`El id ${id} no pertenede a un alumno`);
     }
 
 }
+
+const existeAsignacionAlumnoCurso = async (alumnoId, cursoId) => {
+    const asignacion = await Alumno.findOne({ _id: alumnoId, curso: cursoId });
+    return asignacion !== null;
+};
 
 
 
@@ -58,11 +63,14 @@ const existeCursoById = async (id = '') => {
     }
 }
 
+
+
 module.exports = {
     esRoleValido,
     existenteEmail,
     existeMeatroById,
     existeCursoById,
     existeEmailA,
-    existeAlumnoId
+    existeAlumnoId,
+    existeAsignacionAlumnoCurso
 }

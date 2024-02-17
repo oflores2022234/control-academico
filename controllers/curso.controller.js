@@ -1,5 +1,6 @@
 const Curso = require('../models/curso');
 const { response, request } = require('express');
+const Maestro = require('../models/maestro');
 
 const cursosPost = async (req, res) => {
     const {nombre, descripcion, modalidad} = req.body;
@@ -56,10 +57,12 @@ const putCursos = async (req, res = response) => {
 const cursosDelete = async (req, res = response) => {
     const {id} = req.params;
     const curso = await Curso.findByIdAndUpdate(id, {estado: false});
+    const usuarioAutenticado = req.maestro;
 
     res.status(200).json({
-        msg: 'Curso Eliminado Exitosamente',
-        curso
+        msg: 'Curso A Eliminar',
+        curso,
+        usuarioAutenticado
     });
 }
 

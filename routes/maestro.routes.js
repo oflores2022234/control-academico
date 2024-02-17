@@ -9,6 +9,7 @@ const {
 
 
 const { existenteEmail, esRoleValido, existeMeatroById} = require('../helpers/db-validators');
+const { validarJWT } = require('../middlewares/validar-jwt');
 
 const router = Router();
 
@@ -22,7 +23,6 @@ router.post(
         check("correo", "Este no es un correo valido").isEmail(),
         check("correo").custom(existenteEmail),
         check("telefono", "el telefono debe ser mayor o igual de 8 digitos").isLength({min:8}),
-        check('role').custom(esRoleValido),
         validarCampos,
     ], maestrosPost);
 

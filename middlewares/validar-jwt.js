@@ -3,48 +3,43 @@ const Maestro = require('../models/maestro');
 const Alumno = require('../models/alumno');
 const { request, response } = require('express');
 
-const validarJWT = async(req = request, res =  response, next)=> {
+const validarJWT = async(req = request, res = response, next)=> {
     const token = req.header('x-token');
 
     if(!token){
         return res.status(401).json({
-            msg: 'No hay token en la peticion';
+            msg: 'No hay token en la petición',
         });
     }
 
-    try {
+    try{
+
         const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
 
-        let user = await Maestro.findOne({ uid });
+        const maestro = await Maestro.findById(uid);
 
-        if (!user) {
-            user = await Alumno.findOne({ uid });
-            if (!user) {
-              return res.status(401).json({
-                msg: "Usuario no existe en la base de datos"
-              });
-            }
-          }
-      
-
-        if(!user.estado){
-            return res.status(400).json({
-                msg: "token no válido, usuario con estado false"
+        if(!maestro){
+            return res.status(401).json({
+                msg: "Usuario no existe en la base de datos y/o no es Teacher"
             });
         }
 
-        req.user = user;
+        if(!maestro.estado){
+            return res.status(401).json({
+                msg: "Token no válido, usuario con estado false"
+            });
+        }
+
+        req.maestro = maestro;
         next();
         
-    } catch (e) {
+    }catch(e){
         console.log(e);
         res.status(401).json({
             msg: "Token no válido"
-        });
+        })
     }
-
-}
-
+} 
 module.exports = {
     validarJWT
 }

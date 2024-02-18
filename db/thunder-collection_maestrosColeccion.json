@@ -1,39 +1,39 @@
 {
     "client": "Thunder Client",
     "collectionName": "maestrosColeccion",
-    "dateExported": "2024-02-14T14:02:01.164Z",
+    "dateExported": "2024-02-18T01:58:40.791Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "9a100b7b-e031-4a73-a613-cefa98da3ff1",
-            "colId": "1964789c-45c0-4bba-b8af-b054d5303fa7",
+            "_id": "3a105242-2f79-468f-aa4d-fb6e7767d316",
+            "colId": "0b105960-a4ad-43a8-a7c4-fbe57fd60118",
             "containerId": "",
             "name": "port maestros",
             "url": "http://localhost:3000/api/maestros",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2024-02-14T05:32:38.773Z",
-            "modified": "2024-02-14T06:21:03.989Z",
+            "created": "2024-02-15T03:19:19.203Z",
+            "modified": "2024-02-18T01:40:06.203Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n    \"nombre\":\"alejandro\",\n    \"correo\":\"test22@gmail.com\",\n    \"password\":\"123456\",\n    \"telefono\":\"10101010\",\n    \"role\":\"TEACHER_ROLE\"\n}",
+                "raw": "{\n    \"nombre\":\"pepiro Perez\",\n    \"correo\":\"pepitoperez@mail.com\",\n    \"password\":\"123456\",\n    \"telefono\":\"42363512\"\n}",
                 "form": []
             },
             "tests": []
         },
         {
-            "_id": "cd914c17-a498-49d2-a006-016664dbc36c",
-            "colId": "1964789c-45c0-4bba-b8af-b054d5303fa7",
+            "_id": "4c0976ba-e28d-46ea-ba84-97b08d36ec5a",
+            "colId": "0b105960-a4ad-43a8-a7c4-fbe57fd60118",
             "containerId": "",
             "name": "get maestros",
-            "url": "http://localhost:3000/api/maestros?desde=0&limite=10",
+            "url": "http://localhost:3000/api/maestros?desde=0&limite=15",
             "method": "GET",
             "sortNum": 20000,
-            "created": "2024-02-14T05:50:38.713Z",
-            "modified": "2024-02-14T06:21:25.176Z",
+            "created": "2024-02-15T03:19:19.204Z",
+            "modified": "2024-02-17T16:35:20.063Z",
             "headers": [],
             "params": [
                 {
@@ -43,10 +43,29 @@
                 },
                 {
                     "name": "limite",
-                    "value": "10",
+                    "value": "15",
                     "isPath": false
                 }
             ],
+            "tests": []
+        },
+        {
+            "_id": "8f085126-4f1c-4f7f-8f13-8980f4fb439b",
+            "colId": "0b105960-a4ad-43a8-a7c4-fbe57fd60118",
+            "containerId": "",
+            "name": "put impartirCursos",
+            "url": "http://localhost:3000/api/maestros/65d15ff9336d5350676d6eb1",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-02-18T01:36:49.161Z",
+            "modified": "2024-02-18T01:40:15.342Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"curso\": [\"65d155341932e94e6dbc3a92\", \"65d14c12025e79155b1cddcd\",\"65d14c12025e79155b1cddcd\" ]\n}",
+                "form": []
+            },
             "tests": []
         }
     ]

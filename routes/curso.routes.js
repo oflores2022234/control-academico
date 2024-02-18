@@ -21,6 +21,8 @@ router.get("/", cursosGet);
 router.post(
     "/",
     [
+        validarJWT,
+        esTeacherRole,
         check("nombre", "El nombre no puede estar vacio").not().isEmpty(),
         check("descripcion", "La descripcion no puede estar vacia").not().isEmpty(),
         check("modalidad", "La modalidad no puede estar vacia").not().isEmpty(),
@@ -36,6 +38,9 @@ router.get(
 router.put(
     "/:id",
     [
+        validarJWT,
+        esTeacherRole,
+        tieneRolAutorizado('TEACHER_ROLE', 'SUPER_ROLE'),
         check('id', 'No es un id valido').isMongoId(),
         check('id').custom(existeCursoById),
 
@@ -45,7 +50,7 @@ router.put(
         "/:id",
         [
             validarJWT,
-            esTeacherRole, // <-- Descomentar esta línea si deseas validar que el usuario sea un maestro
+            esTeacherRole,
             tieneRolAutorizado('TEACHER_ROLE', 'SUPER_ROLE'),
             check('id', 'No es un id válido').isMongoId(),
             check('id').custom(existeCursoById),

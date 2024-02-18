@@ -19,9 +19,9 @@ const MaestroSchema = Schema({
         type: String,
         require: [true, 'El telefono es obligatorio']
     },
-    curso:{
-        type: String,
-        default: "none"
+    curso: {
+        type: [Schema.Types.ObjectId],
+        ref: 'Curso'
     },
     role:{
         type: String,

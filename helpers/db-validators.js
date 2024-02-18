@@ -27,8 +27,12 @@ const existeMeatroById = async (id = '') => {
     if(existeMaestro){
         throw new Error(`El id ${id} no pertenede a un usuario`);
     }
-
 }
+
+const existeAsignacionMaestroCurso = async (maestroId, cursoId) => {
+    const asignacion = await Maestro.findOne({ _id: maestroId, curso: cursoId });
+    return asignacion !== null;
+};
 
 /*VALIDACIONES PARA ALUMNO */
 
@@ -72,5 +76,6 @@ module.exports = {
     existeCursoById,
     existeEmailA,
     existeAlumnoId,
-    existeAsignacionAlumnoCurso
+    existeAsignacionAlumnoCurso,
+    existeAsignacionMaestroCurso
 }

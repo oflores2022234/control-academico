@@ -42,7 +42,7 @@ const getCursoById = async (req, res) => {
 
 const putCursos = async (req, res = response) => {
     const { id } = req.params;
-    const { _id, nombre, ...resto } = req.body;
+    const { _id, ...resto } = req.body;
     
   
 

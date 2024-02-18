@@ -20,7 +20,7 @@ const validarJWT = async(req = request, res = response, next)=> {
 
         if(!maestro){
             return res.status(401).json({
-                msg: "Usuario no existe en la base de datos y/o no es Teacher"
+                msg: "not found / no teacher"
             });
         }
 
